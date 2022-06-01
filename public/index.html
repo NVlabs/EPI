@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-svg" href="./images/nvidia.svg">
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="https://kit.fontawesome.com/8290b48404.js" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <link rel="stylesheet" href="./dist/style.css">
+    
+    <title>When to Prune? A Policy towards Early Structural Pruning</title>
+</head>
+<body>
+    <div class="main container">
+        <!-- <nav class="menu">
+            <ul>
+                <li><a href="#news">News</a></li>
+                <li><a href="https://arxiv.org/abs/2112.07658">Paper</a></li>
+            </ul>
+        </nav> -->
+
+        <div class="wrapper">
+            <div class="wrapper-title">
+                <div id="title">When to Prune? A Policy towards Early Structural Pruning</div>
+            </div>
+
+            <div class="wrapper-crew">
+                <div class="crew">
+                    <ul>
+                    	<li class="wow animate__animated animate__fadeInDown"><a target="_blank" class="" href="https://mayings.github.io">Maying Shen</a></li>
+                    	<li class="wow animate__animated animate__fadeInDown"><a target="_blank" class="" href="https://research.nvidia.com/person/pavlo-molchanov">Pavlo Molchanov</a>
+                        <li class="wow animate__animated animate__fadeInDown"><a target="_blank" class="" href="https://research.nvidia.com/person/danny-yin">Hongxu Yin</a></li>
+                        <li class="wow animate__animated animate__fadeInDown"><a target="_blank" class="" href="https://alvarezlopezjosem.github.io/">Jose M. Alvarez</a></li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="wrapper-main-download">
+                <div class="main-download">
+                    <figure>
+                        <img src="./img_source/images/nvidia.svg" alt="">                        
+                    </figure>
+                    <h2>CVPR 2022</h2>
+                    <img src="./img_source/images/logo.jpeg" alt="" width="200">
+                    <!-- <div class="download-btn">
+                        <a class="wow animate__animated animate__lightSpeedInLeft" target="_blank" href="https://arxiv.org/abs/2112.07658"><i class="far fa-sticky-note"></i> Paper (ArXiv) </a>
+                        <a class="wow animate__animated animate__lightSpeedInRight" target="_blank" href=""><i class="fas fa-file-code"></i> Code (to come)</a>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="wrapper-articles">
+                <div class="article">
+                    
+                </div>
+                
+
+                <div id="news" class="article">
+                    <div class="title">
+                        <span>News</span>
+                    </div>
+                    <div class="news-wrapper">
+                        <ul>
+                            <li><i class="fa-solid fa-rss"></i> [Mar 2022] Accpetance as poster presentation.</li>
+                            <li><i class="fa-solid fa-rss"></i> [Mar 2022] Our paper has been accepted to <a target="_blank" href="https://cvpr2022.thecvf.com/">CVPR 2022</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="article">
+                    <div class="title">
+                        <span>Abstract</span>
+                    </div>
+                    <article>
+                        <figure class="article-image">
+                        <!-- <img class="wow animate__animated animate__fadeInLeft" src="./images/client_server.png" alt=""> -->
+                        <!-- <figcaption>*Equal contribution.**Equal advising.</figcaption> -->
+                        <img class="wow animate__animated animate__fadeInLeft" src="./img_source/fig/teaser/teaser_web.png" alt="">
+                        </figure>
+
+                        <p> Pruning enables appealing reductions in network memory footprint and time complexity. Conventional post-training pruning techniques lean towards efficient inference while overlooking the heavy computation for training. Recent exploration of pre-training pruning at initialization hints on training cost reduction via pruning, but suffers noticeable performance degradation. We attempt to combine the benefits of both directions and propose a policy that prunes as early as possible during training without hurting performance. Instead of pruning at initialization, our method exploits initial dense training for few epochs to quickly guide the architecture, while constantly evaluating dominant sub-networks via neuron importance ranking. This unveils dominant sub-networks whose structures turn stable, allowing conventional pruning to be pushed earlier into the training. To do this early, we further introduce an Early Pruning Indicator (EPI) that relies on sub-network architectural similarity and quickly triggers pruning when the sub-network’s architecture stabilizes. Through extensive experiments on ImageNet, we show that EPI empowers a quick tracking of early training epochs suitable for pruning, offering same efficacy as an otherwise “oracle” grid-search that scans through epochs and requires orders of magnitude more compute. Our method yields 1.4% top-1 accuracy boost over state-of-the-art pruning counterparts, cuts down training cost on GPU by 2.4x, hence offers a new efficiency-accuracy boundary for network pruning during training.</p>
+                    </article>
+                    <!-- <figure class="article-image"></figure> -->
+                </div>
+                <div class="article">
+                    <div class="title">
+                        <span>Key Approach</span>
+                    </div>
+                    <article>
+                        <p>
+                        In this work, we aim to take full advantage of early-stage dense model training that is beneficial for rapid learning and optimal architecture exploration while aiming to identify the best sub-network as early as possible, rather than waiting till training ends as in conventional pruning. To understand how the starting point of pruning can be set automatically, we start by analyzing in depth the evolution of pruned architectures via performing trimming across all epochs rigorously and compare their suitability for pruning. The observations that 1) pruning at early epochs results in different final architectures, but 2) dominant architecture emerges within just a few epochs and stabilizes thereafter till training ends, inspire us the novel metric Early Pruning Indicator (EPI). EPI estimates the structure similarity between networks resulted in pruning at consecutive epochs of the same base mode, indicating the early point to start pruning during training. Augmented by EPI, our pruning-aware-training outperforms pruning-at-initialization alternatives by a large margin. We also show that EPI is agnostic to the pruning method used by showing efficacy for both magnitude-based and gradient-based pruning, enabling a new state-of-the-art boundary for training speedup through in-situ pruning.
+                        </p>
+                    </article>
+
+                    <figure class="article-image">
+                        <img class="wow animate__animated animate__fadeInRight" src="./img_source/fig/acc_vs_prune_epoch.png" alt="">
+                        <figcaption>
+                            The final ImageNet Top-1 accuracy of the pruned network when pruning occurs at different epochs during the early stage of training. We observe pruning at initialization tends to result in untrainable network with magnitude-based pruning method. For gradientbased method, we observe a higher degradation occur when more filters are pruned, and show pruning ratios up to 90% on ResNet50. [Pruned Ratio] denotes the percentage of neurons removed.
+                        </figcaption>
+                    </figure>
+
+                    <figure class="article-image">
+                        <img class="wow animate__animated animate__fadeInRight" src="./img_source/fig/epi.png" alt="">
+                        <figcaption>
+                            Structure stability analysis for ResNet architectures for (a) magnitude-based and (b) gradient-based pruning. Dashed line shows the EPI threshold selected for each network under the pruning criterion. 
+                        </figcaption>
+                    </figure>
+                    
+                    </figure>
+                </div>
+            </div>
+
+            <div class="paper">
+            <div id="paper" class="wrapper-extra-links">
+                <div class="extra-link">
+                    <div class="paper-pic">
+                        <span class="paper-title">Paper</span>
+                        <figure>
+                            <a target="_blank" href="https://arxiv.org/abs/2110.12007"><img src="./img_source/fig/paper_cover.png" alt=""></a>
+                        </figure>
+                    </div>
+                    <div class="description">
+                        <p> 	
+                            When to Prune? A Policy towards Early Structural Pruning, CVPR 2022.
+                        </p>
+                        <a target="_blank" href="https://arxiv.org/abs/2110.12007">paper</a>
+                    </div>
+                </div>
+            </div>
+
+           </div>
+
+            <div class="wrapper-code">
+                <span class="title">Bibtex</span>
+                    <pre>
+    <code id="code">
+
+    @inproceedings{shen2022prune,
+        title={When to Prune? A Policy towards Early Structural Pruning},
+        author={Shen, Maying and Molchanov, Pavlo and Yin, Hongxu and Alvarez, Jose M},
+        booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+        year={2022}
+    }   
+                        </code>
+                    </pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="./dist/js/wow.min.js"></script>
+    <script src="./dist/js/main.js"></script>
+</body>
+</html>
